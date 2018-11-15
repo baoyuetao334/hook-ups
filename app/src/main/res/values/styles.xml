@@ -1,0 +1,9 @@
+<resources>
+
+    <style name="AppTheme" parent="@style/BaseTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+
+</resources>
