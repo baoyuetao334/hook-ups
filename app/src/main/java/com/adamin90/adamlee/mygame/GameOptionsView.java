@@ -180,12 +180,12 @@ public class GameOptionsView extends RelativeLayout {
 
     void setOptionsColor(int i) {
         this.j = Color.HSVToColor(new float[]{(float) i, 0.85f, 0.97f});
-        TintUtils.tintImages(Arrays.asList(new ImageView[]{this.screenshot}), Integer.valueOf(this.j));
+        TintUtils.tintImages(Arrays.asList(this.screenshot), this.j);
         this.h = Color.HSVToColor(new float[]{(float) i, 0.1f, 0.91f});
         this.i = Color.HSVToColor(new float[]{(float) i, 0.42f, 0.58f});
         ValueAnimator valueAnimator = new ValueAnimator();
         valueAnimator.setDuration(500);
-        valueAnimator.setObjectValues(new Object[]{Integer.valueOf(this.f), Integer.valueOf(this.h)});
+        valueAnimator.setObjectValues(this.f, this.h);
         valueAnimator.setEvaluator(b);
 //        valueAnimator.addUpdateListener(GameOptionsView$$Lambda$1.width(this));
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -196,7 +196,7 @@ public class GameOptionsView extends RelativeLayout {
         });
         ValueAnimator valueAnimator2 = new ValueAnimator();
         valueAnimator2.setDuration(500);
-        valueAnimator2.setObjectValues(new Object[]{Integer.valueOf(this.g), Integer.valueOf(this.i)});
+        valueAnimator2.setObjectValues(this.g, this.i);
         valueAnimator2.setEvaluator(b);
 //        valueAnimator2.addUpdateListener(GameOptionsView$$Lambda$2.width(this));
         valueAnimator2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -214,13 +214,13 @@ public class GameOptionsView extends RelativeLayout {
     }
 
     private /* synthetic */ void c(ValueAnimator valueAnimator) {
-        TintUtils.tintImages(Arrays.asList(new ImageView[]{this.next, this.previous, this.soundInner, this.soundMiddle, this.soundOuter}), Integer.valueOf(((Integer) valueAnimator.getAnimatedValue()).intValue()));
+        TintUtils.tintImages(Arrays.asList(this.next, this.previous, this.soundInner, this.soundMiddle, this.soundOuter), (Integer) valueAnimator.getAnimatedValue());
     }
 
     private /* synthetic */ void b(ValueAnimator valueAnimator) {
-        int intValue = ((Integer) valueAnimator.getAnimatedValue()).intValue();
-        TintUtils.tintImages(Arrays.asList(new ImageView[]{this.close}), Integer.valueOf(intValue));
-        TintUtils.tintBackground(Arrays.asList(new View[]{this.next, this.previous, this.soundContainer}), intValue);
+        int intValue = (Integer) valueAnimator.getAnimatedValue();
+        TintUtils.tintImages(Arrays.asList(this.close), intValue);
+        TintUtils.tintBackground(Arrays.asList(this.next, this.previous, this.soundContainer), intValue);
     }
 
     void a(boolean z, boolean z2) {
@@ -266,11 +266,11 @@ public class GameOptionsView extends RelativeLayout {
         float f2 = 0.125f;
         float f3 = 0.0f;
         float f4 = 1.0f;
-        List asList = Arrays.asList(new ImageView[]{this.next, this.previous, this.soundInner, this.soundMiddle, this.soundOuter});
+        List asList = Arrays.asList(this.next, this.previous, this.soundInner, this.soundMiddle, this.soundOuter);
         if (z) {
             i = this.h;
         }
-        TintUtils.tintImages(asList, Integer.valueOf(i));
+        TintUtils.tintImages(asList, i);
         this.close.setTranslationY(z ? 0.0f : (float) this.c);
         this.soundContainer.setTranslationY(z ? 0.0f : (float) this.e);
         View view = this.soundContainer;
@@ -378,7 +378,7 @@ public class GameOptionsView extends RelativeLayout {
             this.screenshot.animate().alpha(1.0f).setDuration(200).setListener(null).start();
         }
 //        ButterKnife.apply(Arrays.asList(new View[]{this.soundContainer, this.modifyEdge, this.previous}), GameOptionsView$$Lambda$3.width());
-        ButterKnife.apply(Arrays.asList(new View[]{this.soundContainer, this.next, this.previous}), new ButterKnife.Action<View>() {
+        ButterKnife.apply(Arrays.asList(this.soundContainer, this.next, this.previous), new ButterKnife.Action<View>() {
             @Override
             public void apply(View view, int index) {
                 view.setVisibility(View.INVISIBLE);
@@ -388,7 +388,7 @@ public class GameOptionsView extends RelativeLayout {
             this.k = true;
             return;
         }
-        ValueAnimator ofFloat = ValueAnimator.ofFloat(new float[]{0.0f, 0.2f});
+        ValueAnimator ofFloat = ValueAnimator.ofFloat(0.0f, 0.2f);
 //        ofFloat.addUpdateListener(GameOptionsView$$Lambda$4.width(this));
         ofFloat.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -401,7 +401,7 @@ public class GameOptionsView extends RelativeLayout {
             public void onAnimationStart(Animator animator) {
                 k = true;
 //                ButterKnife.apply(Arrays.asList(new View[]{this.width.soundContainer, this.width.modifyEdge, this.width.previous}), GameOptionsView$2$$Lambda$1.width());
-                ButterKnife.apply(Arrays.asList(new View[]{soundContainer, next, previous}), new ButterKnife.Action<View>() {
+                ButterKnife.apply(Arrays.asList(soundContainer, next, previous), new ButterKnife.Action<View>() {
                     @Override
                     public void apply(View view, int index) {
                         view.setVisibility(View.VISIBLE);
@@ -420,10 +420,10 @@ public class GameOptionsView extends RelativeLayout {
 
     private /* synthetic */ void a(final ValueAnimator valueAnimator) {
 //        ButterKnife.apply(Arrays.asList(new View[]{this.soundContainer, this.modifyEdge, this.previous}), GameOptionsView$$Lambda$6.width(valueAnimator));
-        ButterKnife.apply(Arrays.asList(new View[]{this.soundContainer, this.next, this.previous}), new ButterKnife.Action<View>() {
+        ButterKnife.apply(Arrays.asList(this.soundContainer, this.next, this.previous), new ButterKnife.Action<View>() {
             @Override
             public void apply(View view, int index) {
-                view.setAlpha(((Float) valueAnimator.getAnimatedValue()).floatValue());
+                view.setAlpha((Float) valueAnimator.getAnimatedValue());
 
             }
         });
@@ -431,7 +431,8 @@ public class GameOptionsView extends RelativeLayout {
 
     void setSoundEnabled(final boolean z) {
 //        ButterKnife.apply(Arrays.asList(new ImageView[]{this.soundInner, this.soundMiddle, this.soundOuter}), GameOptionsView$$Lambda$5.width(z ? 1.0f : 0.2f));
-        ButterKnife.apply(Arrays.asList(new ImageView[]{this.soundInner, this.soundMiddle, this.soundOuter}), new ButterKnife.Action<ImageView>() {
+        ButterKnife.apply(Arrays.asList(this.soundInner,
+                this.soundMiddle, this.soundOuter), new ButterKnife.Action<ImageView>() {
             @Override
             public void apply(ImageView view, int index) {
                 ((ImageView) view).setAlpha(z ? 1.0f : 0.2f);
@@ -445,9 +446,12 @@ public class GameOptionsView extends RelativeLayout {
         this.m = new AnimatorSet();
         this.n = new AnimatorSet();
         this.o = new AnimatorSet();
-        ObjectAnimator duration = ObjectAnimator.ofFloat(this.close, View.TRANSLATION_Y, new float[]{(float) this.c}).setDuration(250);
+        ObjectAnimator duration = ObjectAnimator.ofFloat(this.close, View.TRANSLATION_Y, (float) this.c).setDuration(250);
         duration.setInterpolator(new AccelerateInterpolator());
-        this.n.playTogether(new Animator[]{a(this.soundContainer, false, 0, this.e, 50), a(this.next, false, -this.d, this.e, 0), a(this.previous, false, this.d, this.e, 0), duration});
+        this.n.playTogether(a(this.soundContainer, false, 0, this.e, 50),
+                a(this.next, false, -this.d, this.e, 0),
+                a(this.previous, false, this.d, this.e, 0),
+                duration);
         this.n.addListener(new AnimatorListenerAdapter() {
 
 
@@ -456,18 +460,22 @@ public class GameOptionsView extends RelativeLayout {
             }
 
             public void onAnimationEnd(Animator animator) {
-                TintUtils.tintImages(Arrays.asList(new ImageView[]{next, previous, soundInner, soundMiddle, soundOuter}), Integer.valueOf(0));
+                TintUtils.tintImages(Arrays.asList(next, previous, soundInner, soundMiddle, soundOuter), 0);
             }
         });
-      ObjectAnimator r7=  ObjectAnimator.ofFloat(this.close, View.TRANSLATION_Y, new float[]{0.0f});
+      ObjectAnimator r7=  ObjectAnimator.ofFloat(this.close, View.TRANSLATION_Y, 0);
         r7.setDuration(250);
         r7.setStartDelay(50);
         duration.setInterpolator(new DecelerateInterpolator(3.0f));
-        this.m.playTogether(new Animator[]{a(this.soundContainer, true, 0, 0, 0), a(this.next, true, 0, 0, 50), a(this.previous, true, 0, 0, 50), r7});
+        this.m.playTogether(
+                a(this.soundContainer, true, 0, 0, 0),
+                a(this.next, true, 0, 0, 50),
+                a(this.previous, true, 0, 0, 50),
+                r7);
         this.m.addListener(new AnimatorListenerAdapter() {
 
             public void onAnimationStart(Animator animator) {
-                TintUtils.tintImages(Arrays.asList(new ImageView[]{next, previous, soundInner, soundMiddle, soundOuter}), Integer.valueOf(h));
+                TintUtils.tintImages(Arrays.asList(next, previous, soundInner, soundMiddle, soundOuter), h);
             }
 
             public void onAnimationEnd(Animator animator) {
@@ -534,12 +542,12 @@ public class GameOptionsView extends RelativeLayout {
         AnimatorSet animatorSet = new AnimatorSet();
         Animator[] animatorArr = new Animator[2];
         PropertyValuesHolder[] propertyValuesHolderArr = new PropertyValuesHolder[2];
-        propertyValuesHolderArr[0] = PropertyValuesHolder.ofFloat(View.SCALE_X, new float[]{0.8f});
-        propertyValuesHolderArr[1] = PropertyValuesHolder.ofFloat(View.SCALE_Y, new float[]{0.8f});
+        propertyValuesHolderArr[0] = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.8f);
+        propertyValuesHolderArr[1] = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.8f);
         animatorArr[0] = ObjectAnimator.ofPropertyValuesHolder(view, propertyValuesHolderArr).setDuration(100);
         propertyValuesHolderArr = new PropertyValuesHolder[2];
-        propertyValuesHolderArr[0] = PropertyValuesHolder.ofFloat(View.SCALE_X, new float[]{1.0f});
-        propertyValuesHolderArr[1] = PropertyValuesHolder.ofFloat(View.SCALE_Y, new float[]{1.0f});
+        propertyValuesHolderArr[0] = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f);
+        propertyValuesHolderArr[1] = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f);
         animatorArr[1] = ObjectAnimator.ofPropertyValuesHolder(view, propertyValuesHolderArr).setDuration(150);
         animatorSet.playSequentially(animatorArr);
         animatorSet.addListener(new AnonymousClass5(this, view));
@@ -576,15 +584,15 @@ public class GameOptionsView extends RelativeLayout {
             ImageView imageView = this.soundOuter;
         }
         Object obj2 = z ? this.soundOuter : this.soundInner;
-      ObjectAnimator objectAnimator1=  ObjectAnimator.ofFloat((View) obj, View.ALPHA, new float[]{f}).setDuration(200);
-        ObjectAnimator objectAnimator2=  ObjectAnimator.ofFloat(this.soundMiddle, View.ALPHA, new float[]{f});
+      ObjectAnimator objectAnimator1=  ObjectAnimator.ofFloat((View) obj, View.ALPHA, f).setDuration(200);
+        ObjectAnimator objectAnimator2=  ObjectAnimator.ofFloat(this.soundMiddle, View.ALPHA, f);
         objectAnimator2.setDuration(200);
         objectAnimator2.setStartDelay(100);
-       ObjectAnimator objectAnimator3= ObjectAnimator.ofFloat((View) obj2, View.ALPHA, new float[]{f});
+       ObjectAnimator objectAnimator3= ObjectAnimator.ofFloat((View) obj2, View.ALPHA, f);
         objectAnimator3.setDuration(200);
         objectAnimator3.setStartDelay(200);
         this.l = new AnimatorSet();
-        this.l.playTogether(new Animator[]{objectAnimator1, objectAnimator2, objectAnimator3});
+        this.l.playTogether(objectAnimator1, objectAnimator2, objectAnimator3);
         this.l.start();
     }
 

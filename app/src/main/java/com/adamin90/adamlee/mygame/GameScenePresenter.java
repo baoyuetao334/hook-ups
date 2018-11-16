@@ -72,7 +72,7 @@ class GameScenePresenter extends ViewPresenter<GameSceneView>  implements GameSc
     public void rotateCell(int i, int i2) {
         this.b.cells[i][i2].next();
         if (this.b.allConnected()) {
-            String format = String.format("%05d", new Object[]{Integer.valueOf(this.mLevelManager.currentLevel() + 1)});
+            String format = String.format("%05d", this.mLevelManager.currentLevel() + 1);
             long currentTimeMillis = (System.currentTimeMillis() - this.f) - this.e;
 //            width("level_completed_with_duration", format, currentTimeMillis);
 //            width("level_duration", currentTimeMillis, format);
